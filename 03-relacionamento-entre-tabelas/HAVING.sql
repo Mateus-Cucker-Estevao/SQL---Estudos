@@ -1,0 +1,16 @@
+
+
+
+-- USAR O HAVING PARA FILTRAR OS AGRUPAMENTOS,
+-- O WHERE VAI FILTRAR ANTES DO AGRUPAMENTO
+
+USE ContosoRetailDW
+
+SELECT
+	S.ProductKey
+	,SUM(S.SalesQuantity) AS SomaQuantidade
+FROM FactSales AS S 
+WHERE S.DateKey >= '2009-01-01'
+GROUP BY S.ProductKey
+HAVING SUM(S.SalesQuantity) BETWEEN 1500 AND 1600
+ORDER BY SomaQuantidade DESC
