@@ -1,9 +1,0 @@
-
-USE ContosoRetailDW
-
---NOMEANDO AS COLUNAS DAS TABELAS "APELIDOS"
-
-SELECT 
-	SalesKey AS COD_VEND,
-	ProductKey AS COD_PROD
-FROM FactSales
