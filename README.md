@@ -18,6 +18,7 @@ A ordem abaixo segue a data em que estudei cada bloco (baseada na data dos arqui
 | Ago/2026  | [04 — Funções de data](./04-funcoes-de-data/) | `GETDATE`, `DATEADD`, `DATEDIFF`, `FORMAT` e afins |
 | Ago/2026  | [05 — Funções de texto](./05-funcoes-de-texto/) | Variáveis e manipulação de strings |
 | Ago/2026  | [06 — CTE](./06-cte-common-table-expression/) | Common Table Expressions (`WITH`) |
+| Ago/2026  | [07 — Funções de janela](./07-funcoes-de-janela-row-number/) | `ROW_NUMBER`, `OVER` e `PARTITION BY` (rankings) |
 | Mai–Ago/2026 | [🎯 Exercícios](./exercicios/) | Desafios práticos com gabarito |
 
 ---
@@ -42,12 +43,15 @@ A ordem abaixo segue a data em que estudei cada bloco (baseada na data dos arqui
 **CTE (Common Table Expression)**
 `WITH ... AS (...)` para organizar consultas complexas
 
+**Funções de janela (window functions)**
+`ROW_NUMBER()` · `OVER()` · `PARTITION BY` · rankings e "top N por categoria" (com CTE)
+
 ---
 
 ## 🛠️ Ambiente
 
 - **SGBD:** Microsoft SQL Server (T-SQL)
-- **Bancos usados nos exemplos:** `ContosoRetailDW`, `PRIMEIRO_BD` e `AdventureWorksDW2025`
+- **Bancos usados nos exemplos:** `ContosoRetailDW`, `PRIMEIRO_BD`, `AdventureWorksDW2025` e `Chinook`
 - **Ferramentas:** SSMS / Azure Data Studio
 
 ---
@@ -65,6 +69,7 @@ SQL-Estudos/
 ├── 04-funcoes-de-data/
 ├── 05-funcoes-de-texto/
 ├── 06-cte-common-table-expression/
+├── 07-funcoes-de-janela-row-number/
 └── exercicios/                        ← desafios práticos com gabarito
 ```
 
