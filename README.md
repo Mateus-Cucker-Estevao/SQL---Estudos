@@ -18,7 +18,7 @@ A ordem abaixo segue a data em que estudei cada bloco (baseada na data dos arqui
 | Ago/2026  | [04 — Funções de data](./04-funcoes-de-data/) | `GETDATE`, `DATEADD`, `DATEDIFF`, `FORMAT` e afins |
 | Ago/2026  | [05 — Funções de texto](./05-funcoes-de-texto/) | Variáveis e manipulação de strings |
 | Ago/2026  | [06 — CTE](./06-cte-common-table-expression/) | Common Table Expressions (`WITH`) |
-| Ago/2026  | [07 — Funções de janela](./07-funcoes-de-janela-row-number/) | `ROW_NUMBER`, `OVER` e `PARTITION BY` (rankings) |
+| Ago/2026  | [07 — Funções de janela](./07-funcoes-de-janela-row-number/) | `ROW_NUMBER`, `RANK`, `DENSE_RANK`, `NTILE`, `PARTITION BY` (rankings) |
 | Mai–Ago/2026 | [🎯 Exercícios](./exercicios/) | Desafios práticos com gabarito |
 
 ---
@@ -29,7 +29,7 @@ A ordem abaixo segue a data em que estudei cada bloco (baseada na data dos arqui
 `CREATE / ALTER TABLE` · `INSERT` · `UPDATE` · `DELETE` · `SELECT` · `ALIAS` · `WHERE` · `ORDER BY` · `TOP` / `TOP WITH TIES` · `BETWEEN` · `IN` · `LIKE` · `IS NULL` · `NOT` · operadores lógicos · concatenação de colunas
 
 **Agregação**
-`SUM` · `AVG` · `COUNT` · `MIN` · `MAX` · `GROUP BY` · `HAVING` · `WITH ROLLUP`
+`SUM` · `AVG` · `COUNT` · `MIN` · `MAX` · `GROUP BY` · `HAVING` · `WITH ROLLUP` · percentual sobre o total (com CTE)
 
 **Relacionamento entre tabelas**
 `INNER JOIN` · `LEFT JOIN` · `RIGHT JOIN` · `FULL JOIN` · `CROSS JOIN` · múltiplos JOINs · subconsultas (subqueries) com `IN` / `NOT IN` e dentro do `FROM`
@@ -41,17 +41,17 @@ A ordem abaixo segue a data em que estudei cada bloco (baseada na data dos arqui
 `DECLARE` / `SET` · `+` e `CONCAT` · `LEN` · `TRIM` / `LTRIM` / `RTRIM` · `UPPER` / `LOWER` · `SUBSTRING` · `LEFT` / `RIGHT` · `CHARINDEX` · `REPLACE`
 
 **CTE (Common Table Expression)**
-`WITH ... AS (...)` para organizar consultas complexas
+`WITH ... AS (...)` para organizar consultas complexas · CTEs encadeadas
 
 **Funções de janela (window functions)**
-`ROW_NUMBER()` · `OVER()` · `PARTITION BY` · rankings e "top N por categoria" (com CTE)
+`ROW_NUMBER()` · `RANK()` · `DENSE_RANK()` · `NTILE()` · `OVER()` · `PARTITION BY` · rankings e "top N por categoria" (com CTE)
 
 ---
 
 ## 🛠️ Ambiente
 
 - **SGBD:** Microsoft SQL Server (T-SQL)
-- **Bancos usados nos exemplos:** `ContosoRetailDW`, `PRIMEIRO_BD`, `AdventureWorksDW2025` e `Chinook`
+- **Bancos usados nos exemplos:** `ContosoRetailDW`, `PRIMEIRO_BD`, `AdventureWorksDW2025`, `Chinook` e `BikeStores`
 - **Ferramentas:** SSMS / Azure Data Studio
 
 ---
