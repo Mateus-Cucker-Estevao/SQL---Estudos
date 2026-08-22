@@ -94,3 +94,65 @@ SELECT
 FROM ANALISE_MAIOR_COMPRA
 WHERE RANK_NOTAS = 1
 ORDER BY InvoiceTotal DESC
+
+
+/*
+
+Exercício 6 — resumo
+
+Ranking de gasto dentro de cada país.
+
+Colunas: CustomerId, FirstName, LastName, Country, TOTAL_GASTO (soma das InvoiceTotal), POSICAO_NO_PAIS.
+
+Tabelas: Customer + Invoice (JOIN pelo CustomerId).
+
+Filtro: só os 2 primeiros de cada país.
+
+Ordenação final: país A-Z, depois posição.
+
+As três etapas:
+
+Juntar as tabelas e somar o gasto por cliente (GROUP BY) → 1ª CTE
+Numerar por país em cima do total já somado (PARTITION BY Country) → 2ª CTE
+Filtrar <= 2 e ordenar → SELECT final
+
+Em uma frase: quem mais gastou em cada país, top 2, usando duas CTEs — uma para somar, outra para rankear.
+
+*/
+
+-- TOTAL GASTO POR PAIS / PESSOA
+
+WITH GASTO_POR_CLIENTE 
+AS (
+	SELECT
+		C.CustomerId,
+		C.FirstName,
+		C.LastName, 
+		C.Country,
+		SUM(I.InvoiceTotal) AS TOTAL_GASTO  
+	FROM Customer AS C
+	INNER JOIN Invoice AS I ON I.CustomerId = C.CustomerId
+	GROUP BY C.CustomerId,C.FirstName,C.LastName, C.Country
+), 
+RANKING_PAIS AS(
+	SELECT
+		CustomerId,
+		FirstName,
+		LastName, 
+		Country,
+		TOTAL_GASTO,
+		ROW_NUMBER() OVER(PARTITION BY Country ORDER BY TOTAL_GASTO DESC, CustomerId ASC) AS POSICAO_NO_PAIS
+	FROM GASTO_POR_CLIENTE
+)
+
+SELECT
+	CustomerId,
+	FirstName,
+	LastName, 
+	Country,
+	TOTAL_GASTO,
+	POSICAO_NO_PAIS
+FROM RANKING_PAIS
+WHERE POSICAO_NO_PAIS <= 2
+ORDER BY Country ASC, POSICAO_NO_PAIS ASC
+
